@@ -37,14 +37,42 @@ class _MapScreenState extends State<MapScreen> {
           zoom: 14,
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            selectedStyle =
-                selectedStyle == streetStyle ? cianStyle : streetStyle;
-          });
-        },
-        child: const Icon(Icons.add_to_home_screen),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                mapController?.animateCamera(CameraUpdate.zoomOut());
+              });
+            },
+            child: const Icon(Icons.zoom_out),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                mapController?.animateCamera(CameraUpdate.zoomIn());
+              });
+            },
+            child: const Icon(Icons.zoom_in),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          // Change Style
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                selectedStyle =
+                    selectedStyle == streetStyle ? cianStyle : streetStyle;
+              });
+            },
+            child: const Icon(Icons.add_to_home_screen),
+          ),
+        ],
       ),
     );
   }
