@@ -1,4 +1,4 @@
-# NewsApp
+#  MapboxMap
 
 Simple app to learn Flutter
 
